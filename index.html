@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsored Shoe Shop - GSAP Ultimate Edition</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">Shoes</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#cart-summary">My Cart</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Vibe Matrix">🌓</button>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1 class="animate-text"><span>NIKE</span><br>Collection</h1>
+      <p class="animate-text">Step into the future of design. Experience pure performance and comfort wrapped in a striking dynamic silhouette built for the modern athlete.</p>
+      <div class="animate-text">
+        <a href="#collection" class="btn-shop magnetic-target">SHOP NOW</a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrapper">
+      <div class="main-gradient-circle"></div>
+      <div class="accent-dash dash-1"></div>
+      <div class="accent-dash dash-2"></div>
+      <img src="cover-shoe.png" alt="Featured Shoe" class="featured-shoe">
+    </div>
+  </section>
+
+  <section id="collection" class="products-section">
+    <div class="section-header">
+      <h2>Featured Footwear</h2>
+      <p>Click on a card to open the customization and details window</p>
+    </div>
+
+    <div class="shoe-grid-container">
+      <div class="compact-shoe-card tilt-target" onclick="openConfiguratorModal('jordan')">
+        <div class="compact-image-box">
+          <img src="air-jordan-1black.png" alt="Air Jordan 1 Preview" class="compact-shoe-img">
+        </div>
+        <div class="compact-info">
+          <h3 class="compact-title">Air Jordan 1 High Top</h3>
+          <p class="compact-tag">Premium Retro</p>
+          <div class="compact-footer">
+            <span class="compact-price">Ksh 24,500</span>
+            <button class="btn-compact-view">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compact-shoe-card tilt-target" onclick="openConfiguratorModal('af1')">
+        <div class="compact-image-box">
+          <img src="air-force-1white.png" alt="Air Force 1 Preview" class="compact-shoe-img">
+        </div>
+        <div class="compact-info">
+          <h3 class="compact-title">Air Force 1 Low</h3>
+          <p class="compact-tag">Classic Streetwear</p>
+          <div class="compact-footer">
+            <span class="compact-price">Ksh 15,200</span>
+            <button class="btn-compact-view">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compact-shoe-card tilt-target" onclick="openConfiguratorModal('jordan4')">
+        <div class="compact-image-box">
+          <img src="air-jordan-4white-and maroon.png" alt="Air Jordan 4 Preview" class="compact-shoe-img">
+        </div>
+        <div class="compact-info">
+          <h3 class="compact-title">Air Jordan 4</h3>
+          <p class="compact-tag">Retro Flight</p>
+          <div class="compact-footer">
+            <span class="compact-price">Ksh 26,800</span>
+            <button class="btn-compact-view">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compact-shoe-card tilt-target" onclick="openConfiguratorModal('airmax')">
+        <div class="compact-image-box">
+          <img src="air-max-white.png" alt="Air Max Preview" class="compact-shoe-img">
+        </div>
+        <div class="compact-info">
+          <h3 class="compact-title">Air Max 97 Ultra</h3>
+          <p class="compact-tag">Max Cushioning</p>
+          <div class="compact-footer">
+            <span class="compact-price">Ksh 19,800</span>
+            <button class="btn-compact-view">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cart-summary" class="cart-summary-section">
+    <div class="section-header">
+      <h2>Shopping Cart Details</h2>
+      <p>View items currently held inside your bag selection</p>
+    </div>
+    <div class="cart-wrapper">
+      <div id="cartEmptyState" class="cart-empty-msg">Your basket is currently empty. Start shopping above!</div>
+      <div id="cartItemsContainer" class="cart-items-container"></div>
+      
+      <div id="cartCheckoutBar" class="cart-checkout-bar">
+        <div class="total-row">
+          <h3>Total Subtotal:</h3>
+          <span id="cartTotalPriceLabel">Ksh 0</span>
+        </div>
+        <button class="btn-checkout-sim magnetic-target" onclick="handleCheckoutSimulation()">Secure Checkout & Order</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews-section">
+    <div class="section-header">
+      <h2>Customer Experiences</h2>
+      <p>What sneaker lovers are saying about our fair pricing and rapid fulfillment</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Unmatched pricing matrix compared to standard boutiques. Reached my doorstep faster than expected!"</p>
+        <span class="review-author">— Evans M.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Secured the Air Max 97 configuration flawlessly. True bargain pricing for authentic presentation!"</p>
+        <span class="review-author">— Stacy J.</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">"Incredible rates on premium high tops. The dynamic site animations made ordering feel satisfyingly premium."</p>
+        <span class="review-author">— David K.</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="configuratorModal" class="config-modal-overlay">
+    <div class="config-modal-window">
+      <button class="modal-close-x" onclick="closeConfiguratorModal(event)">&times;</button>
+      
+      <div class="modal-split-layout">
+        <div class="modal-image-pane">
+          <div class="modal-circle-backdrop"></div>
+          <img src="air-jordan-1black.png" id="modalShoeImage" alt="Shoe Customizer" class="png-showcase-resize">
+        </div>
+
+        <div class="modal-details-pane">
+          <h3 class="showcase-title" id="modalTitle">Air Jordan 1 High Top</h3>
+          <p class="showcase-tag" id="modalTag">Premium Retro Edition</p>
+          <p class="showcase-price" id="modalPrice">Ksh 24,500</p>
+
+          <hr class="divider">
+
+          <div class="config-group">
+            <span class="config-label">Select Color:</span>
+            <div class="color-picker" id="modalColorPicker"></div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-label">Select Size (US):</span>
+            <div class="size-picker">
+              <div class="size-box active" onclick="selectSize(this)">8</div>
+              <div class="size-box" onclick="selectSize(this)">9</div>
+              <div class="size-box" onclick="selectSize(this)">10</div>
+              <div class="size-box" onclick="selectSize(this)">11</div>
+            </div>
+          </div>
+
+          <div class="config-group">
+            <span class="config-label">Quantity:</span>
+            <div class="qty-picker">
+              <button onclick="changeQty(-1)">-</button>
+              <input type="number" id="shoeQty" value="1" min="1" readonly>
+              <button onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+
+          <button class="btn-buy-now magnetic-target" onclick="triggerCartSuccess()">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact" class="footer-contact-section">
+    <div class="footer-grid">
+      <div class="footer-info">
+        <h3 class="logo">Shoes</h3>
+        <p>Bringing premium dynamic footwear configuration experiences straight to your modern digital portal layout workflow.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation Links</h4>
+        <a href="#">Top Floor</a>
+        <a href="#collection">Collection Track</a>
+        <a href="#reviews">User Feedback</a>
+      </div>
+      <div class="footer-links">
+        <h4>Support Portals</h4>
+        <p>Support Line: +254 700 000000</p>
+        <p>Electronic Mail: delivery@shoeshop.co.ke</p>
+        <p>Operational Base: Nairobi HQ, Kenya</p>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      &copy; 2026 Sponsored Shoe Shop. Crafted cleanly with GSAP Animation Suite Frameworks.
+    </div>
+  </footer>
+
+  <div id="notificationToast" class="toast-alert">
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage">Item added!</span>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Primary Entry Page Reveal Animations Matrix
+    const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 } });
+
+    tl.from(".navbar", { y: -60, opacity: 0, duration: 1 })
+      .from(".animate-text", { y: 50, opacity: 0, stagger: 0.2 }, "-=0.6")
+      .from(".main-gradient-circle", { scale: 0, transformOrigin: "center center", duration: 1.5, ease: "elastic.out(1, 0.75)" }, "-=1")
+      .from(".accent-dash", { scaleX: 0, opacity: 0, stagger: 0.15 }, "-=0.8")
+      .from(".featured-shoe", { x: 200, rotation: 10, opacity: 0, duration: 1.6, ease: "back.out(1.4)" }, "-=1.2");
+
+    gsap.to(".hero-image-wrapper", { y: -15, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: -1 });
+
+    const gridObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          gsap.from(".compact-shoe-card", { y: 30, opacity: 0, duration: 0.6, ease: "power2.out", stagger: 0.15 });
+          gridObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    gridObserver.observe(document.querySelector('.shoe-grid-container'));
+  </script>
+</body>
+</html>
